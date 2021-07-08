@@ -8,7 +8,7 @@ import com.training.emp.repository.EmployeeRepositoryImpl;
 
 public class EmployeeRepositoryTest {
 	public static void main(String[] args) {
-		// Car car = new SportsCar();
+//		 Car car = new SportsCar();
 		System.out.println("Find All Employees");
 		EmployeeRepository repository = new EmployeeRepositoryImpl();
 		Set<Employee> resultSet = repository.findAll();
@@ -18,6 +18,11 @@ public class EmployeeRepositoryTest {
 		int id = 103;
 		Employee resultEmployee = repository.findById(id);
 		System.out.println(resultEmployee);
+		
+		System.out.println("Find By Email");
+		String mail = "Immanuel@mail.com";
+		Employee resultEmployeeWithMail = repository.findByEmail(mail);
+		System.out.println(resultEmployeeWithMail);
 
 		System.out.println("Adding an employee");
 		Employee newEmployee = new Employee(104, "Roopa");

@@ -9,7 +9,9 @@ public interface EmployeeRepository {
 	Set<Employee> findAll();
 
 	Employee findById(int id);
-
+	
+	Employee findByEmail(String mail);
+	
 	void save(Employee employee);
 
 	void update(Employee employee);

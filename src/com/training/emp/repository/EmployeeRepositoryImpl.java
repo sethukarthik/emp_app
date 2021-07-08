@@ -13,12 +13,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	public EmployeeRepositoryImpl() {
 		employeeSet = new HashSet<>();
-		Employee employee1 = new Employee(101, "Immanuel");
-		Employee employee2 = new Employee(102, "Saranya");
-		Employee employee3 = new Employee(103, "Prithivi");
+		Employee employee1 = new Employee(101, "Immanuel", "Immanuel@mail.com");
+		Employee employee2 = new Employee(102, "Saranya", "saranya@mail.com");
+//		Employee employee3 = new Employee(103, "Prithivi");
 		employeeSet.add(employee1);
 		employeeSet.add(employee2);
-		employeeSet.add(employee3);
+//		employeeSet.add(employee3);
 
 	}
 
@@ -37,7 +37,29 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 		}
 		return null;
 	}
+	
+	@Override
+	public Employee findByEmail(String mail) {
+		Iterator<Employee> employee = employeeSet.iterator();
+		while (employee.hasNext()) {
+			Employee data = employee.next();
+			if (data.getEmail() == mail) {
+				return data;
+			}
+		}
+		return null;
+	}	
 
+//	@Override
+//	public Employee findByEmail(String mail) {
+//		for (Employee employee : employeeSet) {
+//			if (employee.getEmail() == mail) {
+//				return (Employee) employee;
+//			}
+//		}
+//		return null;
+//	}	
+	
 	@Override
 	public void save(Employee employee) {
 		employeeSet.add(employee);

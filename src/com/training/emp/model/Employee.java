@@ -3,6 +3,7 @@ package com.training.emp.model;
 public class Employee {
 	private int id;
 	private String name;
+	private String email;
 	private static final String org = "Training";
 	
 	public Employee() {
@@ -11,6 +12,12 @@ public class Employee {
 	public Employee(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+	
+	public Employee(int id, String name, String email) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -21,6 +28,10 @@ public class Employee {
 		return name;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -29,7 +40,9 @@ public class Employee {
 		this.name = name;
 	}
 	
-
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -56,11 +69,17 @@ public class Employee {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (email == null) {
+			if(other.email != null)
+				return false;
+		}else if(!email.equals(other.email)) {
+			return false;
+		}
 		return true;
 	}
 
 	public String toString() {
-		return id + " " + name + " " + org;
+		return id + " " + name + " " + email + " " + org;
 	}
 
 }

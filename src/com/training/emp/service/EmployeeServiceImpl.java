@@ -2,8 +2,6 @@ package com.training.emp.service;
 
 import java.util.Set;
 
-import com.training.emp.dao.EmployeeDAO;
-import com.training.emp.dao.EmployeeDAOImpl;
 import com.training.emp.exception.EmployeeNotFoundException;
 import com.training.emp.model.Employee;
 import com.training.emp.repository.EmployeeRepository;
@@ -11,7 +9,6 @@ import com.training.emp.repository.EmployeeRepositoryImpl;
 
 public class EmployeeServiceImpl implements EmployeeService {
 	private static EmployeeRepository repository;
-	private static EmployeeDAO dao;
 
 	public EmployeeServiceImpl() {
 		repository = new EmployeeRepositoryImpl();
@@ -57,13 +54,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void delete(int id) throws EmployeeNotFoundException {
-		// Employee employee = repository.findById(id);
-		Employee employee = dao.findById(id);
+		 Employee employee = repository.findById(id);
+//		Employee employee = dao.findById(id);
 		if (employee == null) {
 			throw new EmployeeNotFoundException("Employee doesn't exist!!");
 		} else {
 			// repository.delete(id);
-			dao.delete(id);
+//			dao.delete(id);
+			repository.delete(id);
 		}
 	}
 
