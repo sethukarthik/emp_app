@@ -1,11 +1,14 @@
 package com.training.emp.model;
 
+import com.emp_app.roles.Roles;
+
 public class Employee {
 	private int id;
 	private String name;
 	private String email;
 	private static final String org = "Training";
-	
+	public Roles roles;
+
 	public Employee() {
 	}
 
@@ -15,9 +18,14 @@ public class Employee {
 	}
 	
 	public Employee(int id, String name, String email) {
+		this(id, name, email, Roles.SOFTWARE_ENGINEER);
+	}
+	
+	public Employee(int id, String name, String email, Roles roles) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.roles = roles;
 	}
 
 	public int getId() {
@@ -32,6 +40,10 @@ public class Employee {
 		return email;
 	}
 	
+	public Roles getRoles() {
+		return roles;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -42,6 +54,10 @@ public class Employee {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
 	
 	@Override
@@ -79,7 +95,7 @@ public class Employee {
 	}
 
 	public String toString() {
-		return id + " " + name + " " + email + " " + org;
+		return("EmployeeId: " + id + " " + "Employee Name: " + name + " " + "MailId: " + email + " " + "Designation: " + roles + " " + org);
 	}
 
 }

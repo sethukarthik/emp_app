@@ -22,7 +22,7 @@ public class EmployeeServiceTest {
 
 		System.out.println("Find By Id");
 		// 2. Get input to id
-		int id = 1;
+		int id = 101;
 		try {
 			// 3. call findById in service with id as input
 			Employee employee = service.findById(id);
@@ -34,7 +34,7 @@ public class EmployeeServiceTest {
 
 		System.out.println("Update Id");
 		// 1. Create New employee Data to be updated
-		Employee updateEmployee = new Employee(1, "ImmanuelMathew");
+		Employee updateEmployee = new Employee(1, "Immanuel");
 		try {
 			// 2. call the update method in service with input emp obje
 			service.update(updateEmployee);

@@ -15,7 +15,7 @@ public class EmployeeRepositoryTest {
 		System.out.println(resultSet);
 
 		System.out.println("Find By Id");
-		int id = 103;
+		int id = 105;
 		Employee resultEmployee = repository.findById(id);
 		System.out.println(resultEmployee);
 		
