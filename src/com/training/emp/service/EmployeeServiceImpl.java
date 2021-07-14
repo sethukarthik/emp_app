@@ -2,6 +2,7 @@ package com.training.emp.service;
 
 import java.util.Set;
 
+import com.emp_app.database_connection.EmployeeInfo;
 import com.training.emp.exception.EmployeeNotFoundException;
 import com.training.emp.model.Employee;
 import com.training.emp.repository.EmployeeRepository;
@@ -17,8 +18,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Set<Employee> findAll() {
-		return repository.findAll();
-//		return dao.findAll();
+		EmployeeInfo empInfo = new EmployeeInfo();
+		return empInfo.findAll();
 	}
 
 	@Override

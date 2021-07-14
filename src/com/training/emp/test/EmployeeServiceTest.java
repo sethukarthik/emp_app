@@ -32,23 +32,23 @@ public class EmployeeServiceTest {
 			// 5. If emp not found
 		}
 
-		System.out.println("Update Id");
-		// 1. Create New employee Data to be updated
-		Employee updateEmployee = new Employee(1, "Immanuel");
-		try {
-			// 2. call the update method in service with input emp obje
-			service.update(updateEmployee);
-			employeeSet = service.findAll();
-			System.out.println(employeeSet);
-		} catch (EmployeeNotFoundException e) {
+//		System.out.println("Update Id");
+//		// 1. Create New employee Data to be updated
+//		Employee updateEmployee = new Employee(1, "Immanuel");
+//		try {
+//			// 2. call the update method in service with input emp obje
+//			service.update(updateEmployee);
+//			employeeSet = service.findAll();
+//			System.out.println(employeeSet);
+//		} catch (EmployeeNotFoundException e) {
+//
+//		}
 
-		}
-
-		System.out.println("Adding an employee");
-		Employee newEmployee = new Employee(4, "Kavin");
-		service.save(newEmployee);
-		employeeSet = service.findAll();
-		System.out.println(employeeSet);
+//		System.out.println("Adding an employee");
+//		Employee newEmployee = new Employee(4, "Kavin");
+//		service.save(newEmployee);
+//		employeeSet = service.findAll();
+//		System.out.println(employeeSet);
 
 		System.out.println("Deleting an employee");
 		id = 3;

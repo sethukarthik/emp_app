@@ -24,17 +24,17 @@ public class EmployeeRepositoryTest {
 		Employee resultEmployeeWithMail = repository.findByEmail(mail);
 		System.out.println(resultEmployeeWithMail);
 
-		System.out.println("Adding an employee");
-		Employee newEmployee = new Employee(104, "Roopa");
-		repository.save(newEmployee);
-		resultSet = repository.findAll();
-		System.out.println(resultSet);
+//		System.out.println("Adding an employee");
+//		Employee newEmployee = new Employee(104, "Roopa");
+//		repository.save(newEmployee);
+//		resultSet = repository.findAll();
+//		System.out.println(resultSet);
 
-		System.out.println("Updating an employee");
-		Employee updateEmployee = new Employee(104, "RoopaR");
-		repository.update(updateEmployee);
-		resultSet = repository.findAll();
-		System.out.println(resultSet);
+//		System.out.println("Updating an employee");
+//		Employee updateEmployee = new Employee(104, "RoopaR");
+//		repository.update(updateEmployee);
+//		resultSet = repository.findAll();
+//		System.out.println(resultSet);
 
 		System.out.println("Delete By Id");
 		id = 103;

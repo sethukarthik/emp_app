@@ -1,33 +1,37 @@
 package com.training.emp.model;
 
-import com.emp_app.roles.Roles;
+import com.emp_app.designation.Roles;
 
 public class Employee {
 	private int id;
 	private String name;
 	private String email;
+	private short corpId;
+	private String band;
+	private long phoneNumber;
 	private static final String org = "Training";
-	public Roles roles;
+	public Roles designation;
 
-	public Employee() {
-	}
-
-	public Employee(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-	
-	public Employee(int id, String name, String email) {
-		this(id, name, email, Roles.SOFTWARE_ENGINEER);
-	}
-	
-	public Employee(int id, String name, String email, Roles roles) {
+	public Employee(int id, String name, String email, short copr_id, String band, long phone_number) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.roles = roles;
+		this.corpId = copr_id;
+		this.band = band;
+		this.phoneNumber = phone_number;
+		this.designation = Roles.SENIOR_SOFTWARE_ENGINEER;
 	}
-
+	
+	public Employee(int id, String name, String email, short copr_id, String band, long phone_number, Roles designation) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.corpId = copr_id;
+		this.band = band;
+		this.phoneNumber = phone_number;
+		this.designation = designation;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -40,8 +44,24 @@ public class Employee {
 		return email;
 	}
 	
+	public String getcorpId() {
+		return email;
+	}
+	
 	public Roles getRoles() {
-		return roles;
+		return designation;
+	}
+	
+	public short getCorpId() {
+		return corpId;
+	}
+	
+	public String getBand() {
+		return band;
+	}
+	
+	public long getPhoneNumber() {
+		return phoneNumber;
 	}
 	
 	public void setId(int id) {
@@ -57,7 +77,19 @@ public class Employee {
 	}
 
 	public void setRoles(Roles roles) {
-		this.roles = roles;
+		this.designation = roles;
+	}
+	
+	public void setCorpId(short corpId) {
+		this.corpId = corpId;
+	}
+
+	public void setBand(String band) {
+		this.band = band;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	
 	@Override
@@ -95,7 +127,13 @@ public class Employee {
 	}
 
 	public String toString() {
-		return("EmployeeId: " + id + " " + "Employee Name: " + name + " " + "MailId: " + email + " " + "Designation: " + roles + " " + org);
+		return( "EmployeeId: " + id + " " + 
+				"Employee Name: " + name + " " + 
+				"MailId: " + email + " " + 
+				"Designation: " + designation  + " " + 
+				"CorpId: " + corpId + " " + 
+				"Organization Band: " + band + " " + 
+				"Contact Number: " + phoneNumber+ " " );
 	}
 
 }
