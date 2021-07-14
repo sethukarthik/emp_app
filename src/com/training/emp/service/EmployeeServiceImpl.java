@@ -10,27 +10,22 @@ import com.training.emp.repository.EmployeeRepositoryImpl;
 
 public class EmployeeServiceImpl implements EmployeeService {
 	private static EmployeeRepository repository;
+	private static EmployeeInfo dao;
 
 	public EmployeeServiceImpl() {
 		repository = new EmployeeRepositoryImpl();
-//		dao = new EmployeeDAOImpl();
 	}
 
 	@Override
 	public Set<Employee> findAll() {
-		EmployeeInfo empInfo = new EmployeeInfo();
-		return empInfo.findAll();
+		dao = new EmployeeInfo();
+		return dao.findAll();
 	}
 
 	@Override
-	public Employee findById(int id) throws EmployeeNotFoundException {
-		Employee employee = repository.findById(id);
-//		Employee employee = dao.findById(id);
-		if (employee == null) {
-			throw new EmployeeNotFoundException("Employee Id Not Found");
-		} else {
-			return employee;
-		}
+	public Set<Employee> findById(int id) throws EmployeeNotFoundException {
+		dao = new EmployeeInfo();
+		return dao.findById(id);
 	}
 
 	@Override

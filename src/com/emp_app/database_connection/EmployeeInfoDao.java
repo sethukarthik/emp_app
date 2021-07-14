@@ -7,7 +7,7 @@ import com.training.emp.model.Employee;
 public interface EmployeeInfoDao {
 	Set<Employee> findAll();
 	
-	Employee findById(int id);
+	Set<Employee> findById(int id);
 	
 	void save(Employee employee);
 	

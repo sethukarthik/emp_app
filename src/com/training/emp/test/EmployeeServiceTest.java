@@ -1,5 +1,6 @@
 package com.training.emp.test;
 
+import java.util.Scanner;
 import java.util.Set;
 
 import com.training.emp.exception.EmployeeNotFoundException;
@@ -13,23 +14,19 @@ public class EmployeeServiceTest {
 		Set<Employee> employeeSet;
 		// 1. Create an object for service
 		EmployeeService service = new EmployeeServiceImpl();
-
-		System.out.println("Employee Service");
-
-		System.out.println("Find All Employees");
+		System.out.println("---> From Employee Service Find All Employees <---");
 		employeeSet = service.findAll();
 		System.out.println(employeeSet);
 
-		System.out.println("Find By Id");
 		// 2. Get input to id
-		int id = 101;
+		System.out.println("Find By Id");
+		Scanner getEmpId = new Scanner(System.in);
+		int id = getEmpId.nextInt();
 		try {
-			// 3. call findById in service with id as input
-			Employee employee = service.findById(id);
-			// 4. Print the employee
-			System.out.println(employee);
+			employeeSet = service.findById(id);
+			System.out.println(employeeSet);
 		} catch (EmployeeNotFoundException e) {
-			// 5. If emp not found
+			e.printStackTrace();
 		}
 
 //		System.out.println("Update Id");

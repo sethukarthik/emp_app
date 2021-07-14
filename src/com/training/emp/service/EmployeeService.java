@@ -8,7 +8,7 @@ import com.training.emp.model.Employee;
 public interface EmployeeService {
 	Set<Employee> findAll();
 
-	Employee findById(int id) throws EmployeeNotFoundException;
+	Set<Employee> findById(int id) throws EmployeeNotFoundException;
 
 	void save(Employee employee);
 
