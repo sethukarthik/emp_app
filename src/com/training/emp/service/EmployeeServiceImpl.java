@@ -1,5 +1,6 @@
 package com.training.emp.service;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import com.emp_app.database_connection.EmployeeInfo;
@@ -28,36 +29,36 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return dao.findById(id);
 	}
 
+	//Insert New Employee data
 	@Override
 	public void save(Employee employee) {
-		repository.save(employee);
-//		dao.save(employee);
-
+		dao = new EmployeeInfo();
+		dao.save(employee);
 	}
 
 	@Override
 	public void update(Employee employee) throws EmployeeNotFoundException {
-		Employee result = repository.findById(employee.getId());
-//		Employee result = dao.findById(employee.getId());
-		if (result == null) {
+		dao = new EmployeeInfo();
+		Set<Employee> result = new LinkedHashSet<>();
+		result = dao.findById(employee.getCorpId());
+		if (result.isEmpty() || result == null) {
 			throw new EmployeeNotFoundException("Employee Id Not Found");
 		} else {
-			repository.update(employee);
-//			dao.update(employee);
+			dao = new EmployeeInfo();
+			dao.update(employee);
 		}
-
 	}
 
 	@Override
 	public void delete(int id) throws EmployeeNotFoundException {
-		 Employee employee = repository.findById(id);
-//		Employee employee = dao.findById(id);
-		if (employee == null) {
-			throw new EmployeeNotFoundException("Employee doesn't exist!!");
+		dao = new EmployeeInfo();
+		Set<Employee> result = new LinkedHashSet<>();
+		result = dao.findById(id);
+		if (result.isEmpty() || result == null) {
+			throw new EmployeeNotFoundException("Employee Id Not Found");
 		} else {
-			// repository.delete(id);
-//			dao.delete(id);
-			repository.delete(id);
+			dao = new EmployeeInfo();
+			dao.delete(id);
 		}
 	}
 

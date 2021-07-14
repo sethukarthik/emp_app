@@ -22,14 +22,24 @@ public class Employee {
 		this.designation = Roles.SENIOR_SOFTWARE_ENGINEER;
 	}
 	
-	public Employee(int id, String name, String email, short copr_id, String band, long phone_number, Roles designation) {
+	public Employee(int id, String name, String email, short copr_id, Roles designation, String band, long phone_number) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.corpId = copr_id;
+		this.designation = designation;
 		this.band = band;
 		this.phoneNumber = phone_number;
+	}
+	
+	//For creating a new Employee the ID is auto increment and we use this constructor new employee.
+	public Employee(String name, String email, short copr_id, Roles designation, String band, long phone_number) {
+		this.name = name;
+		this.email = email;
+		this.corpId = copr_id;
 		this.designation = designation;
+		this.band = band;
+		this.phoneNumber = phone_number;
 	}
 	
 	public int getId() {
