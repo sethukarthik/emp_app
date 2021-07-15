@@ -47,7 +47,7 @@ public class EmployeeInfo implements EmployeeInfoDao {
 		}
 	}
 	
-	void systcloseConnection() {
+	static void systcloseConnection(Statement stmt, Connection con) {
 		try {				
 			if(stmt != null) {
 				stmt.close();
@@ -81,7 +81,7 @@ public class EmployeeInfo implements EmployeeInfoDao {
 		}catch (SQLException e) {
 			System.err.println(e.toString());
 		} finally {
-			systcloseConnection();
+			EmployeeInfo.systcloseConnection(stmt, con);
 		}
 		return null;
 	}

@@ -2,7 +2,6 @@ package com.training.emp.model;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import com.emp_app.designation.Roles;
@@ -53,6 +52,12 @@ public class EmployeeTest {
 		long phone = 234567890l;
 		emp.setPhoneNumber(phone);
 		assertEquals(emp.getPhoneNumber(), phone);
+	}
+	
+	//UnitTest for Constructor without ID
+	public void testEmployeeCons() {
+		Employee emp1 = new Employee(8, "nagesh", "nageshkomban@mail.com", (short) 1006, Roles.GRADUATE_TRAINEE, "L2", 8866554433l);
+		assertEquals(emp.getName(), "nagesh");
 	}
 	
 }
