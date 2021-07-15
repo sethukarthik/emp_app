@@ -11,6 +11,9 @@ public class Employee {
 	private long phoneNumber;
 	private static final String org = "Training";
 	public Roles designation;
+	
+	public Employee() {
+	}
 
 	public Employee(int id, String name, String email, short copr_id, String band, long phone_number) {
 		this.id = id;
@@ -51,10 +54,6 @@ public class Employee {
 	}
 
 	public String getEmail() {
-		return email;
-	}
-	
-	public String getcorpId() {
 		return email;
 	}
 	
@@ -132,6 +131,10 @@ public class Employee {
 				return false;
 		}else if(!email.equals(other.email)) {
 			return false;
+		}
+		if (corpId == 0) {
+			if(other.corpId != 0)
+				return false;
 		}
 		return true;
 	}
