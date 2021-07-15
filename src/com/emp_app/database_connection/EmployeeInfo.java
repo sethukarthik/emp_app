@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import com.training.emp.model.Employee;
+import com.training.emp.model.Salary;
 
 public class EmployeeInfo implements EmployeeInfoDao {
 	// Database connection variables
@@ -20,9 +21,11 @@ public class EmployeeInfo implements EmployeeInfoDao {
 	private Statement stmt;
 	private static Set<Employee> employeeSet;
 	private Employee emp;
+	private Salary sal;	
 	private static final String newEmp = "Insert into employee_info (name, email, corp_id, designation_id, band, phone_number) VALUES (?,?,?,?,?,?)";
 	private static final String updEmp = "Update employee_info SET name=?, email=?, designation_id=?, band=?, phone_number=? WHERE corp_id=?";
 	private static final String delEmp = "Delete from employee_info WHERE corp_id=?";
+	private static final String empWithSalary = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id";
 	
 	// Database Connection established in the constructor
 	public EmployeeInfo() {
@@ -99,7 +102,7 @@ public class EmployeeInfo implements EmployeeInfoDao {
 									result.getString("email"), 
 									result.getShort("corp_id"), 
 									result.getString("band"), 
-									result.getLong("phone_number") 
+									result.getLong("phone_number")
 								  );
 				employeeSet.add(emp);
 			}
@@ -164,5 +167,31 @@ public class EmployeeInfo implements EmployeeInfoDao {
 		} finally {
 			closeConnection();
 		}
+	}
+	
+	@Override
+	public Set<Employee> findSalary() {
+		try {
+			stmt = con.createStatement();
+			result = stmt.executeQuery(empWithSalary);
+			employeeSet = new LinkedHashSet<>();
+			while (result.next()) {
+				emp = new Employee(	result.getInt("id"), 
+									result.getString("name"), 
+									result.getString("email"), 
+									result.getShort("corp_id"), 
+									result.getString("band"), 
+									result.getLong("phone_number"),
+									new Salary(result.getDouble("fixed_pay"))
+									);
+				employeeSet.add(emp);
+			}
+			return employeeSet;
+		}catch (SQLException e) {
+			System.err.println(e.toString());
+		} finally {
+			EmployeeInfo.systcloseConnection(stmt, con);
+		}
+		return null;
 	}
 }

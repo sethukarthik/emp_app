@@ -10,11 +10,11 @@ import com.training.emp.repository.EmployeeRepository;
 import com.training.emp.repository.EmployeeRepositoryImpl;
 
 public class EmployeeServiceImpl implements EmployeeService {
-	private static EmployeeRepository repository;
+//	private static EmployeeRepository repository;
 	private static EmployeeInfo dao;
 
 	public EmployeeServiceImpl() {
-		repository = new EmployeeRepositoryImpl();
+//		repository = new EmployeeRepositoryImpl();
 	}
 
 	@Override
@@ -60,6 +60,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 			dao = new EmployeeInfo();
 			dao.delete(id);
 		}
+	}
+	
+	@Override
+	public Set<Employee> findSalary() {
+		dao = new EmployeeInfo();
+		return dao.findSalary();
 	}
 
 }

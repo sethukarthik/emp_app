@@ -15,5 +15,7 @@ public interface EmployeeService {
 	void update(Employee employee) throws EmployeeNotFoundException;
 
 	void delete(int id) throws EmployeeNotFoundException;
+	
+	Set<Employee> findSalary();
 
 }

@@ -1,5 +1,6 @@
 package com.training.emp.model;
 
+
 import com.emp_app.designation.Roles;
 
 public class Employee {
@@ -9,30 +10,21 @@ public class Employee {
 	private short corpId;
 	private String band;
 	private long phoneNumber;
-	private static final String org = "Training";
+//	private static final String org = "Training";
 	public Roles designation;
+	private Salary salary; 
 	
 	public Employee() {
 	}
-
-	public Employee(int id, String name, String email, short copr_id, String band, long phone_number) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.corpId = copr_id;
-		this.band = band;
-		this.phoneNumber = phone_number;
-		this.designation = Roles.SENIOR_SOFTWARE_ENGINEER;
+	// FindAll Employee with salary
+	public Employee(int id, String name, String email, short copr_id, String band, long phone_number, Salary salary) {
+		this(id, name, email, copr_id, band, phone_number);
+		this.salary = salary;
 	}
 	
-	public Employee(int id, String name, String email, short copr_id, Roles designation, String band, long phone_number) {
+	public Employee(int id, String name, String email, short copr_id, String band, long phone_number) {
+		this(name, email, copr_id, Roles.SENIOR_SOFTWARE_ENGINEER, band, phone_number);
 		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.corpId = copr_id;
-		this.designation = designation;
-		this.band = band;
-		this.phoneNumber = phone_number;
 	}
 	
 	//For creating a new Employee the ID is auto increment and we use this constructor new employee.
@@ -140,13 +132,26 @@ public class Employee {
 	}
 
 	public String toString() {
-		return( "EmployeeId: " + id + " " + 
-				"Employee Name: " + name + " " + 
-				"MailId: " + email + " " + 
-				"Designation: " + designation  + " " + 
-				"CorpId: " + corpId + " " + 
-				"Organization Band: " + band + " " + 
-				"Contact Number: " + phoneNumber+ " " );
+		if(this.salary == null) {
+			return( "EmployeeId: " + id + " " + 
+					"Employee Name: " + name + " " + 
+					"MailId: " + email + " " + 
+					"Designation: " + designation  + " " + 
+					"CorpId: " + corpId + " " + 
+					"Organization Band: " + band + " " + 
+					"Contact Number: " + phoneNumber+ " " 
+				   );
+		}else {
+			return( "EmployeeId: " + id + " " + 
+					"Employee Name: " + name + " " + 
+					"MailId: " + email + " " + 
+					"Designation: " + designation  + " " + 
+					"CorpId: " + corpId + " " + 
+					"Organization Band: " + band + " " + 
+					"Contact Number: " + phoneNumber+ " " + 
+					"Salary: " + this.salary
+				   );
+		}
 	}
 
 }
