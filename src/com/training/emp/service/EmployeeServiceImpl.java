@@ -73,5 +73,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		dao = new EmployeeInfo();
 		return dao.getMaxPaidEmp();
 	}
+	
+	@Override
+	public Set<Employee> getMinPaidEmp() {
+		dao = new EmployeeInfo();
+		return dao.getMinPaidEmp();
+	}
 
 }

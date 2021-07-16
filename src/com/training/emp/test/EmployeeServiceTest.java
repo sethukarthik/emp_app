@@ -71,6 +71,11 @@ public class EmployeeServiceTest {
 		System.out.println("---> From high paid employee with Salary <---");
 		empSalarySet = service.getMaxPaidEmp();
 		System.out.println(empSalarySet);
+		
+		//8. Find Min paid Employee with Salary
+		System.out.println("---> From high paid employee with Salary <---");
+		empSalarySet = service.getMinPaidEmp();
+		System.out.println(empSalarySet);
 	}
 
 }

@@ -25,7 +25,8 @@ public class EmployeeInfo implements EmployeeInfoDao {
 	private static final String updEmp = "Update employee_info SET name=?, email=?, designation_id=?, band=?, phone_number=? WHERE corp_id=?";
 	private static final String delEmp = "Delete from employee_info WHERE corp_id=?";
 	private static final String empWithSalary = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id";
-	private static final String empMaxPaid= "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id order by sal.fixed_pay desc LIMIT 1";
+	private static final String empMaxPaid = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id order by sal.fixed_pay desc LIMIT 1";
+	private static final String empMinPaid = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id order by sal.fixed_pay asc LIMIT 1";
 	
 	// Database Connection established in the constructor
 	public EmployeeInfo() {
@@ -200,6 +201,32 @@ public class EmployeeInfo implements EmployeeInfoDao {
 		try {
 			stmt = con.createStatement();
 			result = stmt.executeQuery(empMaxPaid);
+			employeeSet = new LinkedHashSet<>();
+			while (result.next()) {
+				emp = new Employee(	result.getInt("id"), 
+									result.getString("name"), 
+									result.getString("email"), 
+									result.getShort("corp_id"), 
+									result.getString("band"), 
+									result.getLong("phone_number"),
+									new Salary(result.getDouble("fixed_pay"))
+									);
+				employeeSet.add(emp);
+			}
+			return employeeSet;
+		} catch(SQLException e) {
+			System.err.println(e.toString());
+		} finally {
+			EmployeeInfo.systcloseConnection(stmt, con);
+		} 
+		return null;
+	}
+	
+	@Override
+	public Set<Employee> getMinPaidEmp(){
+		try {
+			stmt = con.createStatement();
+			result = stmt.executeQuery(empMinPaid);
 			employeeSet = new LinkedHashSet<>();
 			while (result.next()) {
 				emp = new Employee(	result.getInt("id"), 

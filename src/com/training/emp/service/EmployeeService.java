@@ -26,4 +26,7 @@ public interface EmployeeService {
 	
 	//To find the high paid employee in the organization
 	Set<Employee> getMaxPaidEmp();
+	
+	//To find the low paid employee in the organization
+	Set<Employee> getMinPaidEmp();
 }
