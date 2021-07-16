@@ -10,7 +10,7 @@ public class Employee {
 	private short corpId;
 	private String band;
 	private long phoneNumber;
-//	private static final String org = "Training";
+	//	private static final String org = "Training";
 	public Roles designation;
 	private Salary salary; 
 	

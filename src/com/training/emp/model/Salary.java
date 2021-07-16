@@ -37,7 +37,7 @@ public class Salary {
 
 	@Override
 	public String toString() {
-		return "Salary [fixedPay=" + fixedPay + "]";
+		return ("Salary fixedPay: " + fixedPay);
 	}
 	
 	

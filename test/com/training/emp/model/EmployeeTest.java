@@ -54,10 +54,10 @@ public class EmployeeTest {
 		assertEquals(emp.getPhoneNumber(), phone);
 	}
 	
-	//UnitTest for Constructor without ID
-//	public void testEmployeeCons() {
-//		Employee emp1 = new Employee(8, "nagesh", "nageshkomban@mail.com", (short) 1006, Roles.GRADUATE_TRAINEE, "L2", 8866554433l);
-//		assertEquals(emp.getName(), "nagesh");
-//	}
+//	UnitTest for Constructor without ID
+	public void testEmployeeCons() {
+		emp = new Employee("nagesh", "nageshkomban@mail.com", (short) 1006, Roles.GRADUATE_TRAINEE, "L2", 8866554433l);
+		assertEquals(emp.getName(), "nagesh");
+	}
 	
 }

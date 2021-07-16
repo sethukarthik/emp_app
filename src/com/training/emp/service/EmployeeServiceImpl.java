@@ -67,5 +67,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		dao = new EmployeeInfo();
 		return dao.findSalary();
 	}
+	
+	@Override
+	public Set<Employee> getMaxPaidEmp() {
+		dao = new EmployeeInfo();
+		return dao.getMaxPaidEmp();
+	}
 
 }
