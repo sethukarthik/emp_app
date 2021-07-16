@@ -27,6 +27,7 @@ public class EmployeeInfo implements EmployeeInfoDao {
 	private static final String empWithSalary = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id";
 	private static final String empMaxPaid = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id order by sal.fixed_pay desc LIMIT 1";
 	private static final String empMinPaid = "SELECT * FROM employee_info emp LEFT JOIN salary sal ON sal.employee_info_id = emp.id order by sal.fixed_pay asc LIMIT 1";
+	private static final String totalSal = "SELECT fixed_pay FROM salary";
 	
 	// Database Connection established in the constructor
 	public EmployeeInfo() {
@@ -246,5 +247,24 @@ public class EmployeeInfo implements EmployeeInfoDao {
 			EmployeeInfo.systcloseConnection(stmt, con);
 		} 
 		return null;
+	}
+	
+	@Override
+	public double totalSal() {
+		try {
+			stmt = con.createStatement();
+			result = stmt.executeQuery(totalSal);
+			Double totalSalary = 0.0;
+			while (result.next()) {
+				Salary sal = new Salary (result.getDouble("fixed_pay"));
+				totalSalary += sal.getFixedPay();
+			}
+			return Math.round(totalSalary * 100) / 100.00;
+		} catch(SQLException e) {
+			System.err.println(e.toString());
+		} finally {
+			EmployeeInfo.systcloseConnection(stmt, con);
+		} 
+		return 0;
 	}
 }

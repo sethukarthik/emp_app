@@ -12,6 +12,7 @@ import com.training.emp.repository.EmployeeRepositoryImpl;
 public class EmployeeServiceImpl implements EmployeeService {
 //	private static EmployeeRepository repository;
 	private static EmployeeInfo dao;
+	private static Set<Employee> employeeSet;
 
 	public EmployeeServiceImpl() {
 //		repository = new EmployeeRepositoryImpl();
@@ -78,6 +79,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Set<Employee> getMinPaidEmp() {
 		dao = new EmployeeInfo();
 		return dao.getMinPaidEmp();
+	}
+	
+	@Override
+	public double totalSal() {
+		dao = new EmployeeInfo();
+		return dao.totalSal();
 	}
 
 }

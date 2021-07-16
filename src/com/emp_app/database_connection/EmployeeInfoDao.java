@@ -28,4 +28,7 @@ public interface EmployeeInfoDao {
 	
 	//To find the low paid employee in the organization
 	Set<Employee> getMinPaidEmp();
+	
+	//Total Salary
+	double totalSal();
 }

@@ -29,4 +29,6 @@ public interface EmployeeService {
 	
 	//To find the low paid employee in the organization
 	Set<Employee> getMinPaidEmp();
+	
+	double totalSal();
 }
